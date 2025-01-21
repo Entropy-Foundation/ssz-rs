@@ -186,12 +186,17 @@ pub fn calculate_merkle_root(leaf: &Node, proof: &[Node], index: &GeneralizedInd
 
     let mut hasher = Sha256::new();
     for (i, next) in proof.iter().enumerate() {
+        println!("indexxx {:?}   {}",index.get_bit(i),i);
         if index.get_bit(i) {
             hasher.update(&next.0);
+            println!("hasher result after update1: {:?}",result);    //added for debug and remove in future
             hasher.update(&result.0);
+            println!("hasher result after update2: {:?}",result);    //added for debug and remove in future
         } else {
             hasher.update(&result.0);
+            println!("hasher result after update1: {:?}",result);    //added for debug and remove in future
             hasher.update(&next.0);
+            println!("hasher result after update2: {:?}",result);    //added for debug and remove in future
         }
         result.0.copy_from_slice(&hasher.finalize_reset());
     }

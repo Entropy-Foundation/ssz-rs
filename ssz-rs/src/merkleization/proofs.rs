@@ -8,6 +8,8 @@ use crate::{
     SszTypeClass,
 };
 use alloc::collections::{BTreeMap, BTreeSet};
+//added for debug and remove in future
+use log::info;
 use sha2::{Digest, Sha256};
 
 pub fn is_valid_merkle_branch<'a>(
@@ -193,6 +195,8 @@ pub fn calculate_merkle_root(leaf: &Node, proof: &[Node], index: &GeneralizedInd
         }
         result.0.copy_from_slice(&hasher.finalize_reset());
     }
+    info!("hasher result: {:?}",result);    //added for debug and remove in future
+    println!("hasher result: {:?}",result);    //added for debug and remove in future
     result
 }
 

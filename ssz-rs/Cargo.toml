@@ -40,6 +40,7 @@ num-bigint = { version ="0.4.3", default-features = false }
 codec = { package = "parity-scale-codec", version = "3.2.2", default-features = false, features = [
     "derive"
 ] }
+log = "0.4.25"
 
 [dev-dependencies]
 hex-literal = "0.3.3"
